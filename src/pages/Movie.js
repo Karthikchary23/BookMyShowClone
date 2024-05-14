@@ -5,6 +5,22 @@ import MovieHero from "../components/moviHero/MovieHeroComponent";
 
 
 const  Movie = () => {
+   const launchRazorPay = () => {
+      let options = {
+        key: "ur api id",
+        amount: 500*100,
+        currency: "INR",
+        name: "Book My Show Clone",
+        description: "Movie Purchase on Rental",
+        image: "https://i.ibb.co/zPBYW3H/imgbin-bookmyshow-office-android-ticket-png.png",
+        handler: () => {
+          alert("Payment Done")
+        },
+        theme: {color: "#c4242d"}
+      };
+      let rzp = new window.Razorpay(options);
+      rzp.open();
+    };
 return (
 <>
 <MovieHero />
@@ -27,6 +43,8 @@ return (
             <p className="text-gray-600 text-sm">Get Rs.75* off on 3 movies you buy/rent on Stream. Buy Filmy Pass @Rs.99</p>
          </div>
       </div>
+      <button onClick={launchRazorPay} class="mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-8 rounded">
+  Book tickets</button>
    </div>
 
    
